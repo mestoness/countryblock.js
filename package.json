@@ -2,7 +2,7 @@
 "name": "countryblock.js",
 "version": "1.0.0",
 "description": "Block countries you do not want to enter the site",
-"main": "index.js",
+"main": "dist/js/countryblock.min.js",
 "scripts": {
     "test": "echo \"No test specified\""
 },
