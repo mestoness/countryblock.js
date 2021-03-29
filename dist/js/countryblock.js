@@ -1,3 +1,8 @@
+/*!
+ * loaderMest.js  (https://github.com/mestoness/countryblock.js)
+ * Author : Ahmet Baki Memiş 
+ * Licensed under MIT (https://github.com/mestoness/countryblock.js/blob/master/LICENSE)
+*/
 const countryBlock = (userSettings) => {
     "use strict";
     var extend = function(defaults, options) {
@@ -22,29 +27,21 @@ const countryBlock = (userSettings) => {
     }, userSettings);
     if (settingsAll.status == true && settingsAll.country != null) {
         var countryBannedJSreq = new XMLHttpRequest;
-        countryBannedJSreq.open("GET", "http://ip-api.com/json/?fields=countryCode", true),
-            countryBannedJSreq.onload = function() {
-                if (countryBannedJSreq.status === 200) {
-                    var responseJson = JSON.parse(countryBannedJSreq.responseText);
-                    if (responseJson.countryCode != null) {
-                        if (settingsAll.country.indexOf(responseJson.countryCode) !== -1) {
-                            document.querySelector("html").remove();
-                            if (settingsAll.locationHref != null) {
-                                location.href = settingsAll.locationHref;
-                            }
+        countryBannedJSreq.open("GET", "http://ip-api.com/json/?fields=countryCode", true), countryBannedJSreq.onload = function() {
+            if (countryBannedJSreq.status === 200) {
+                var responseJson = JSON.parse(countryBannedJSreq.responseText);
+                if (responseJson.countryCode != null) {
+                    if (settingsAll.country.indexOf(responseJson.countryCode) !== -1) {
+                        document.querySelector("html").remove();
+                        if (settingsAll.locationHref != null) {
+                            location.href = settingsAll.locationHref;
                         }
                     }
-                    else{
-                          if (settingsAll.locationHref != null) {
-                              location.href = settingsAll.locationHref;
-                          }
-                          document.querySelector("html").remove();
-                        }  
-                } else {
-                    console.log("API error");
                 }
-            },
-            countryBannedJSreq.onerror = function() {},
-            countryBannedJSreq.send();
+                /*else{if(settingsAll.locationHref!=null){location.href=settingsAll.locationHref;} document.querySelector("html").remove();}*/
+            } else {
+                console.log("API error");
+            }
+        }, countryBannedJSreq.onerror = function() {}, countryBannedJSreq.send();
     }
 }

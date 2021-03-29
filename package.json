@@ -1,6 +1,6 @@
 {
 "name": "countryblock.js",
-"version": "1.0.0",
+"version": "1.1.0",.
 "description": "Block countries you do not want to enter the site",
 "main": "dist/js/countryblock.min.js",
 "scripts": {
